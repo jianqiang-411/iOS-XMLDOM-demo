@@ -9,7 +9,8 @@
 #import "BJQAppDelegate.h"
 
 #import "BJQViewController.h"
-
+#import "UserModel.h"
+#import "AAAViewController.h"
 @implementation BJQAppDelegate
 
 - (void)dealloc
@@ -21,10 +22,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    UserModel *um = [UserModel shareUserModel];;
+    [um printXMLUseDOM];
+
+    
+    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.viewController = [[[BJQViewController alloc] initWithNibName:@"BJQViewController" bundle:nil] autorelease];
-    self.window.rootViewController = self.viewController;
+    self.viewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"city" image:nil tag:100];
+
+ 
+    AAAViewController *aaa = [[AAAViewController alloc] initWithNibName:@"AAAViewController" bundle:nil];
+    aaa.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"country" image:nil tag:110];
+    self.tabC = [[UITabBarController alloc] init];
+    self.tabC.viewControllers = @[self.viewController,aaa];
+    self.window.rootViewController = self.tabC;
     [self.window makeKeyAndVisible];
     return YES;
 }

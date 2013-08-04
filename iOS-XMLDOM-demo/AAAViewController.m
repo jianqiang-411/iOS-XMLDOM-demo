@@ -1,24 +1,24 @@
 //
-//  BJQViewController.m
+//  AAAViewController.m
 //  iOS-XMLDOM-demo
 //
 //  Created by kevin on 13-5-28.
 //  Copyright (c) 2013年 BJQ. All rights reserved.
 //
 
-#import "BJQViewController.h"
+#import "AAAViewController.h"
 #import "UserModel.h"
-#import "Citys.h"
-@interface BJQViewController () <UITableViewDataSource>
+#import "Country.h"
+@interface AAAViewController ()
 
 @end
 
-@implementation BJQViewController
+@implementation AAAViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.datasArr = [UserModel shareUserModel].muarr;
+    self.datasArr = [UserModel shareUserModel].muarr_Country;
     NSLog(@"====%i",[self.datasArr count]);
 	
 }
@@ -36,11 +36,11 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIndentifier];
     }
-    Citys *acity = [[Citys alloc] init];
-    acity = [self.datasArr objectAtIndex:indexPath.row];
-    cell.textLabel.text = acity.cname;
-    cell.detailTextLabel.text = acity.cid;
-    cell.imageView.image = [UIImage imageNamed:@"city"];
+    Country *acountry = [[Country alloc] init];
+    acountry = [self.datasArr objectAtIndex:indexPath.row];
+    cell.textLabel.text = acountry.cname;
+    cell.detailTextLabel.text = acountry.cid;
+    cell.imageView.image = [UIImage imageNamed:@"country"];
     return cell;
 }
 
@@ -49,22 +49,6 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
-}// Default is 1 if not implemented
-
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section   // fixed font style. use custom view (UILabel) if you want something different
-//{
-//    
-//}
-//- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
-//{
-//    
-//}
-
-
-- (void)dealloc
-{
-    [self.datasArr release];
-    [super dealloc];
 }
 
 @end

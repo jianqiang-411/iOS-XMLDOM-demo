@@ -16,4 +16,6 @@
 
 @property (strong, nonatomic) BJQViewController *viewController;
 
+@property (strong, nonatomic) UITabBarController *tabC;
+
 @end
